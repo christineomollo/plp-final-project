@@ -1,0 +1,51 @@
+------------------------------------
+
+Node.js
+
+------------------------------------
+
+Dependencies
+
+/node_modules
+/npm-debug.log
+/yarn-error.log
+
+Production/Distribution Files
+
+/dist
+/build
+
+------------------------------------
+
+Environment Variables & Secrets
+
+------------------------------------
+
+CRITICAL: Keep local environment variables secure!
+
+.env
+.env.*
+!.env.example # Share this template, but not the secrets
+
+------------------------------------
+
+Operating System & Editor Files
+
+------------------------------------
+
+macOS
+
+.DS_Store
+
+Visual Studio Code
+
+.vscode/
+
+IDE files (e.g., IntelliJ, WebStorm)
+
+.idea/
+*.iml
+
+Thumbnails
+
+Thumbs.db
