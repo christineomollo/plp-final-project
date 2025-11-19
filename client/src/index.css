@@ -15,7 +15,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* Light Mode Background (Pink/Lavender/Peach Gradient) */
-  background: linear-gradient(135deg, #E6E6FA 0%, #FFFFFF 50%, #FFDAB9 100%);
+  background: linear-gradient(135deg, #a8a8c1 0%, #FFFFFF 50%, #FFDAB9 100%);
   background-attachment: fixed;
   min-height: 100vh;
   color: #333;
@@ -460,13 +460,13 @@ label {
 .alert-warning {
   background: #FFFBEB;
   border-color: #F6AD55;
-  color: #7C2D12;
+  color: #9b7c9a;
 }
 
 .alert-danger {
   background: #FFF5F5;
   border-color: #FF6B6B;
-  color: #742A2A;
+  color: #9b7c9a;
 }
 
 /* Modal Styles */

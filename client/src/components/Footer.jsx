@@ -49,24 +49,24 @@ function Footer() {
             <h3 className="font-semibold text-gray-900 mb-4">Support</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-600 hover:text-bestie-purple transition-colors text-sm">
+                <button className="text-gray-600 hover:text-bestie-purple transition-colors text-sm bg-transparent border-none cursor-pointer text-left">
                   Help Center
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#" className="text-gray-600 hover:text-bestie-purple transition-colors text-sm">
+                <button className="text-gray-600 hover:text-bestie-purple transition-colors text-sm bg-transparent border-none cursor-pointer text-left">
                   Privacy Policy
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#" className="text-gray-600 hover:text-bestie-purple transition-colors text-sm">
+                <button className="text-gray-600 hover:text-bestie-purple transition-colors text-sm bg-transparent border-none cursor-pointer text-left">
                   Terms of Service
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#" className="text-gray-600 hover:text-bestie-purple transition-colors text-sm">
+                <button className="text-gray-600 hover:text-bestie-purple transition-colors text-sm bg-transparent border-none cursor-pointer text-left">
                   Contact Us
-                </a>
+                </button>
               </li>
             </ul>
           </div>

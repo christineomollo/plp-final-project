@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { contentAPI } from '../services/api';
@@ -14,15 +14,10 @@ const Dashboard = () => {
   const [affirmationLoading, setAffirmationLoading] = useState(false);
   const [selectedArticle, setSelectedArticle] = useState(null);
 
-  // Fetch data on mount
-  useEffect(() => {
-    fetchDashboardData();
-  }, [selectedCategory]);
-
-  const fetchDashboardData = async () => {
+  const fetchDashboardData = useCallback(async () => {
     try {
       setLoading(true);
-      
+
       // Fetch affirmation
       const affirmationData = await contentAPI.getAffirmation();
       setAffirmation(affirmationData.affirmation);
@@ -40,7 +35,12 @@ const Dashboard = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedCategory]);
+
+  // Fetch data on mount
+  useEffect(() => {
+    fetchDashboardData();
+  }, [fetchDashboardData]);
 
   const refreshAffirmation = async () => {
     try {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, Shield, Users, Sparkles, Globe, Target, Award } from 'lucide-react';
+import { Heart, Shield, Users, Sparkles, Globe, Target } from 'lucide-react';
 
 const About = () => {
   return (
