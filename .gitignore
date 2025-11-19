@@ -49,3 +49,11 @@ IDE files (e.g., IntelliJ, WebStorm)
 Thumbnails
 
 Thumbs.db
+
+------------------------------------
+
+Cache files
+
+------------------------------------
+.DS_Store
+/client/node_modules/
