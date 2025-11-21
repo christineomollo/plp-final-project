@@ -14,10 +14,8 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
-  /* Light Mode Background: BABY GREEN SOLID */
-  background-color: #e6ffe6; /* Baby Green Solid */
-
+  /* Light Mode Background (Pink/Lavender/Peach Gradient) */
+  background: linear-gradient(135deg, #a8a8c1 0%, #FFFFFF 50%, #FFDAB9 100%);
   background-attachment: fixed;
   min-height: 100vh;
   color: #333;
@@ -61,23 +59,23 @@ html[data-theme="dark"] {
   --bestie-lavender: #1a1a2e; /* Dark background */
   --bestie-peach: #3a3a5a;
   --bestie-rose: #591b5c;
-  --bestie-lilac: #C8A2C8;
-  --white: #1a1a2e;
+  --bestie-lilac: #C8A2C8; 
+  --white: #1a1a2e; 
   --gray-100: #1f1f3a;
   --gray-200: #2a2a4c;
   --gray-300: #3a3a5a;
   --gray-400: #4a4a70;
-  --gray-500: #9aa0c0; /* Footer/Body Text Color (Still slightly gray for contrast) */
+  --gray-500: #9aa0c0; /* Footer/Body Text Color */
   --gray-600: #c1c1d8;
   --gray-700: #e0e0e0;
   --gray-800: #f0f0f0;
-  --gray-900: #ffffff; /* Explicit White */
+  --gray-900: #ffffff; /* Heading Color */
 }
 
 /* Dark Mode Body Background and Text */
 html[data-theme="dark"] body {
   background: linear-gradient(135deg, #1a1a2e 0%, #0a0a1a 50%, #1a1a2e 100%);
-  color: var(--gray-900); /* Using --gray-900 (white) for default text */
+  color: var(--gray-700); 
 }
 
 /* Custom Scrollbar */
@@ -110,19 +108,12 @@ html[data-theme="dark"] .bg-gray-50 {
 html[data-theme="dark"] .border-gray-200 {
   border-color: var(--gray-400) !important;
 }
-
 /* Text Colors */
 html[data-theme="dark"] .text-gray-600 {
-  color: var(--gray-900) !important; /* CHANGED TO WHITE */
-}
-html[data-theme="dark"] .text-gray-700 {
-  color: var(--gray-900) !important; /* CHANGED TO WHITE */
-}
-html[data-theme="dark"] .text-gray-800 {
-  color: var(--gray-900) !important; /* CHANGED TO WHITE */
+  color: var(--gray-500) !important;
 }
 html[data-theme="dark"] .text-gray-900 {
-  color: var(--gray-900) !important; /* Set explicitly to white */
+  color: var(--gray-100) !important;
 }
 
 /* --- DARK MODE GRADIENT FOR FOOTER HEADINGS (Quick Links, Support, Emergency) --- */
@@ -134,7 +125,9 @@ html[data-theme="dark"] .grid.md\:grid-cols-4 h3.text-gray-900 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  color: initial;
+  display: inline-block; /* Essential for text clipping to work */
+  /* Override the !important used elsewhere for text-gray-900, if needed */
+  color: initial; 
 }
 
 
@@ -145,21 +138,21 @@ html[data-theme="dark"] .bg-red-50 {
   background-color: #330000 !important;
 }
 html[data-theme="dark"] .text-red-700 {
-  color: #FFB6C1 !important;
+  color: #4fd7d0 !important;
 }
 html[data-theme="dark"] .hover\:bg-red-100:hover {
-  background-color: #4f0000 !important;
+  background-color: #4fd7d0 !important;
 }
 
 /* Domestic Violence (bg-orange-50, text-orange-700) */
 html[data-theme="dark"] .bg-orange-50 {
-  background-color: #331A00 !important;
+  background-color: #4fd7d0 !important;
 }
 html[data-theme="dark"] .text-orange-700 {
   color: #FFDAB9 !important;
 }
 html[data-theme="dark"] .hover\:bg-orange-100:hover {
-  background-color: #4f2600 !important;
+  background-color: #4fd7d0 !important;
 }
 
 /* --- FOOTER LAYOUT & EFFECTS (Based on Footer.jsx structure) --- */
@@ -362,7 +355,7 @@ html[data-theme="dark"] .input-field,
 html[data-theme="dark"] input[type="text"],
 html[data-theme="dark"] textarea,
 html[data-theme="dark"] select {
-  background: var(--bestie-lavender);
+  background: var(--bestie-lavender); 
   border-color: var(--bestie-purple);
   color: var(--gray-700);
 }
@@ -906,42 +899,4 @@ html[data-theme="dark"] .gradient-text {
   .lg\:text-5xl { font-size: 3rem; }
   .lg\:text-6xl { font-size: 3.75rem; }
   .lg\:px-12 { padding-left: 3rem; padding-right: 3rem; }
-}
-
-/* --- Custom App Component Overrides & Dark Mode Tab Fix --- */
-
-/* Apply Base Body Background (Light Mode) */
-.bg-page { 
-    background-color: #e6ffe6; /* Baby Green Solid (Matches modified body rule) */
-}
-
-/* Header styling */
-header { 
-    background: var(--white);
-    transition: background 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Theme Toggle Button Styling */
-.theme-toggle-btn {
-    padding: 0.5rem;
-    border-radius: 9999px; /* rounded-full */
-    transition: all 0.3s ease;
-    background-color: var(--bestie-lavender);
-}
-.theme-toggle-btn:hover {
-     transform: scale(1.05);
-}
-
-
-/* Dark Mode Tab Removal (Re-implemented for the new CSS structure) */
-html[data-theme="dark"] #nav-help, 
-html[data-theme="dark"] #nav-support, 
-html[data-theme="dark"] #nav-contact, 
-html[data-theme="dark"] #nav-terms {
-    display: none !important;
-}
-
-/* Custom style for Gemini Buttons */
-.gemini-btn {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
