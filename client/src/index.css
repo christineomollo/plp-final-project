@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Burbestie Themed App (Gemini Integration)</title>
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS CDN REMOVED -->
     <style>
         /* Reset and Base Styles */
         * {
@@ -24,7 +23,7 @@
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
           
-          /* Light Mode Background: MODIFIED TO BABY GREEN SOLID */
+          /* Light Mode Background: BABY GREEN SOLID */
           background-color: #e6ffe6; /* Baby Green Solid */
 
           background-attachment: fixed;
@@ -86,7 +85,7 @@
         /* Dark Mode Body Background and Text */
         html[data-theme="dark"] body {
           background: linear-gradient(135deg, #1a1a2e 0%, #0a0a1a 50%, #1a1a2e 100%);
-          color: var(--gray-900); /* MODIFIED: Using --gray-900 (white) for default text */
+          color: var(--gray-900); /* Using --gray-900 (white) for default text */
         }
 
         /* Custom Scrollbar */
@@ -125,10 +124,10 @@
           color: var(--gray-900) !important; /* CHANGED TO WHITE */
         }
         html[data-theme="dark"] .text-gray-700 {
-          color: var(--gray-900) !important; /* ADDED/CHANGED TO WHITE */
+          color: var(--gray-900) !important; /* CHANGED TO WHITE */
         }
         html[data-theme="dark"] .text-gray-800 {
-          color: var(--gray-900) !important; /* ADDED/CHANGED TO WHITE */
+          color: var(--gray-900) !important; /* CHANGED TO WHITE */
         }
         html[data-theme="dark"] .text-gray-900 {
           color: var(--gray-900) !important; /* Set explicitly to white */
@@ -143,8 +142,6 @@
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
-          display: inline-block; /* Essential for text clipping to work */
-          /* Override the !important used elsewhere for text-gray-900, if needed */
           color: initial;
         }
 
@@ -926,10 +923,23 @@
             background-color: #e6ffe6; /* Baby Green Solid (Matches modified body rule) */
         }
         
-        /* Header background uses new white variable in light mode */
+        /* Header styling */
         header { 
             background: var(--white);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
         }
+        
+        /* Theme Toggle Button Styling */
+        .theme-toggle-btn {
+            padding: 0.5rem;
+            border-radius: 9999px; /* rounded-full */
+            transition: all 0.3s ease;
+            background-color: var(--bestie-lavender);
+        }
+        .theme-toggle-btn:hover {
+             transform: scale(1.05);
+        }
+
 
         /* Dark Mode Tab Removal (Re-implemented for the new CSS structure) */
         html[data-theme="dark"] #nav-help, 
@@ -951,14 +961,12 @@
     <div id="app" class="min-h-screen flex flex-col items-center">
 
         <!-- Header/Navigation -->
-        <!-- Updated classes to use new CSS variables and utility classes where possible -->
-        <header class="w-full shadow-lg p-4 bg-white/70 backdrop-blur-sm transition-colors duration-300">
+        <header class="w-full shadow-lg p-4 transition-colors">
             <div class="container-xl mx-auto flex justify-between items-center">
                 <h1 class="text-xl font-bold gradient-text">Burbestie App</h1>
                 
                 <!-- Theme Toggle Button -->
-                <button id="themeToggle" class="p-2 rounded-full transition-all duration-300 bg-gray-200 hover:scale-105" 
-                    style="background-color: var(--bestie-lavender);">
+                <button id="themeToggle" class="theme-toggle-btn">
                     <!-- Icon placeholder (Sun/Moon) -->
                     <!-- Icons adapted to use new CSS variables -->
                     <svg id="sunIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="color: var(--bestie-peach);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
@@ -968,27 +976,28 @@
         </header>
 
         <!-- Main Content -->
-        <main class="w-full container-xl p-4 md:p-8 flex-grow">
+        <main class="w-full container-xl p-4 md\:p-8 flex-grow">
             
             <!-- Navigation Tabs -->
-            <nav class="mb-8 p-3 rounded-xl shadow-inner" style="background-color: var(--bestie-lavender);">
+            <nav class="mb-8 p-3 rounded-xl shadow-md" style="background-color: var(--bestie-lavender);">
                 <ul class="flex flex-wrap justify-center gap-4 text-sm font-medium">
-                    <li><a href="#" class="hover:text-pink-600 transition">Home</a></li>
-                    <li><a href="#" class="hover:text-pink-600 transition">Products</a></li>
-                    <li id="nav-help"><a href="#" class="hover:text-pink-600 transition">Help Center</a></li>
-                    <li id="nav-support"><a href="#" class="hover:text-pink-600 transition">Support</a></li>
-                    <li id="nav-contact"><a href="#" class="hover:text-pink-600 transition">Contact</a></li>
-                    <li id="nav-terms"><a href="#" class="hover:text-pink-600 transition">Terms of Service</a></li>
+                    <li><a href="#" class="transition" style="color: var(--gray-700);">Home</a></li>
+                    <li><a href="#" class="transition" style="color: var(--gray-700);">Products</a></li>
+                    <!-- New Donate Tab -->
+                    <li><a href="#donate-section" class="transition font-bold text-lg" style="color: var(--bestie-pink);">DONATE</a></li>
+                    <li id="nav-help"><a href="#" class="transition" style="color: var(--gray-700);">Help Center</a></li>
+                    <li id="nav-support"><a href="#" class="transition" style="color: var(--gray-700);">Support</a></li>
+                    <li id="nav-contact"><a href="#" class="transition" style="color: var(--gray-700);">Contact</a></li>
+                    <li id="nav-terms"><a href="#" class="transition" style="color: var(--gray-700);">Terms of Service</a></li>
                 </ul>
             </nav>
 
             <h2 class="text-2xl font-bold mb-6 text-gray-800">LLM-Powered Features</h2>
 
             <!-- Example Cards with Theming -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md\:grid-cols-2 lg\:grid-cols-3 gap-6">
 
                 <!-- Card 1: Primary Pink Theme - Product Description Generator -->
-                <!-- Uses new .card and .btn-primary classes -->
                 <div class="card flex flex-col h-full" style="background-color: var(--bestie-rose);">
                     <h2 class="text-lg font-semibold mb-2 text-gray-900">Item Feature</h2>
                     <p class="text-sm flex-grow text-gray-700">Generate a professional, compelling marketing description for the 'Chic Minimalist Backpack'.</p>
@@ -1000,7 +1009,6 @@
                 </div>
 
                 <!-- Card 2: Secondary Purple Theme - Analytics Summary -->
-                <!-- Uses new .card and .btn-secondary classes -->
                 <div class="card flex flex-col h-full" style="background-color: var(--bestie-lavender);">
                     <h2 class="text-lg font-semibold mb-2 text-gray-900">Analytics Report</h2>
                     <p class="text-sm flex-grow text-gray-700">Get key, grounded takeaways on the latest AI market trends (uses Google Search).</p>
@@ -1019,8 +1027,8 @@
             </div>
 
             <!-- Global Output Area -->
-            <div id="outputArea" class="mt-10 p-6 rounded-2xl shadow-inner" style="background-color: var(--bestie-lavender);">
-                <h3 class="text-xl font-semibold mb-4 border-b pb-2" style="border-color: var(--bestie-purple);">AI Output</h3>
+            <div id="outputArea" class="mt-8 p-6 rounded-2xl shadow-md" style="background-color: var(--bestie-lavender);">
+                <h3 class="text-xl font-semibold mb-4 border-b pb-4" style="border-color: var(--bestie-purple);">AI Output</h3>
                 <div id="card1Output" class="mb-6 p-4 rounded-lg card text-sm text-gray-700" style="background-color: var(--white);">
                     Output for Card 1 (Marketing Copy) will appear here.
                 </div>
@@ -1029,6 +1037,33 @@
                 </div>
             </div>
 
+            <!-- New: Donate Section -->
+            <section id="donate-section" class="mt-8 py-12 rounded-2xl text-center shadow-2xl" style="background: linear-gradient(145deg, var(--bestie-pink), var(--bestie-purple));">
+                <h2 class="text-white text-3xl md\:text-4xl font-extrabold mb-6">Empower Women: Your Donation Matters</h2>
+                <p class="text-white mb-8 container-sm mx-auto">
+                    Your generous support directly fuels our mission to uplift and empower women through education, skill development, and creating safer online spaces. Every contribution helps foster independence and resilience.
+                </p>
+
+                <div class="grid grid-cols-1 md\:grid-cols-3 gap-6 container-md mx-auto mb-8">
+                    <div class="card p-5" style="background-color: var(--bestie-rose);">
+                        <h4 class="text-xl font-bold mb-2 text-gray-900">1. Skill Development</h4>
+                        <p class="text-sm text-gray-700">Funds provide access to digital literacy and career training programs, opening doors to economic self-sufficiency.</p>
+                    </div>
+                    <div class="card p-5" style="background-color: var(--bestie-lavender);">
+                        <h4 class="text-xl font-bold mb-2 text-gray-900">2. Mental Health Support</h4>
+                        <p class="text-sm text-gray-700">Donations help us offer free or subsidized counseling and mental wellness resources tailored to women's needs.</p>
+                    </div>
+                    <div class="card p-5" style="background-color: var(--bestie-peach);">
+                        <h4 class="text-xl font-bold mb-2 text-gray-900">3. Safe Community Spaces</h4>
+                        <p class="text-sm text-gray-700">Your help secures and maintains the infrastructure needed for our safe, monitored online platform and community initiatives.</p>
+                    </div>
+                </div>
+
+                <a href="#payment-link" class="btn btn-lg btn-secondary shadow-xl" style="color: var(--bestie-purple); background: var(--white);">
+                    Donate Now & Make an Impact
+                </a>
+            </section>
+            
         </main>
 
         <!-- Footer -->
