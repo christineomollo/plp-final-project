@@ -3,7 +3,7 @@
 💖 BurBestie: A Supportive Haven for Women - Project Documentation
 
 "A digital haven built on safety, community, and comprehensive well-being, dedicated to empowering every woman."
-
+Deployment link https://burbestie.onrender.com
 Project Overview
 
 BurBestie is an interactive, full-stack web platform meticulously designed to serve as a secure and empowering digital space for women, affectionately known within the community as "Besties." The core mission is to provide essential, accessible tools for holistic well-being, encompassing mental resilience, trusted community support, and personal security resources. By integrating these critical components, the platform aims to actively foster genuine, supportive connections and strengthen the collective confidence of its users globally.
