@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
-const User = require('../models/user');
+const user = require('../models/user');
 const protect = require('../middleware/auth');
 
 // Generate JWT
@@ -22,7 +22,7 @@ const generateOTP = () => {
 // @access  Public
 router.post('/register', [
   body('phone').matches(/^\+[1-9]\d{1,14}$/).withMessage('Invalid international phone number'),
-  body('username').trim().isLength({ min: 3, max: 30 }).withMessage('Username must be 3-30 characters'),
+  body('username').trim().isLength({ min: 3, max: 30 }).withMessage('username must be 3-30 characters'),
   body('password').isLength({ min: 8 }).withMessage('Password must be at least 8 characters')
 ], async (req, res) => {
   const errors = validationResult(req);
@@ -41,7 +41,7 @@ router.post('/register', [
     if (userExists) {
       return res.status(400).json({
         success: false,
-        message: 'User with this phone number or username already exists'
+        message: 'user with this phone number or username already exists'
       });
     }
 
@@ -105,7 +105,7 @@ router.post('/verify-otp', [
     // Verify temp token
     const decoded = jwt.verify(tempToken, process.env.JWT_SECRET);
     
-    const user = await User.findOne({ 
+    const user = await user.findOne({ 
       _id: decoded.id,
       phone,
       'otp.code': otp,
@@ -169,7 +169,7 @@ router.post('/login', [
     const { phone, password } = req.body;
 
     // Find user
-    const user = await User.findOne({ phone });
+    const user = await user.findOne({ phone });
     if (!user) {
       return res.status(401).json({
         success: false,
