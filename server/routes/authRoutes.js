@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
-const user = require('../models/user');
+// The model is imported as the lowercase variable 'user'
+const user = require('../models/user'); 
 const protect = require('../middleware/auth');
 
 // Generate JWT
@@ -37,7 +38,8 @@ router.post('/register', [
     const { phone, username, password } = req.body;
 
     // Check if user exists
-    const userExists = await User.findOne({ $or: [{ phone }, { username }] });
+    // FIX: Changed User.findOne to user.findOne to match the import variable name
+    const userExists = await user.findOne({ $or: [{ phone }, { username }] });
     if (userExists) {
       return res.status(400).json({
         success: false,
@@ -47,10 +49,11 @@ router.post('/register', [
 
     // Generate OTP
     const otp = generateOTP();
+    // Ensure OTP_EXPIRY is set in your Render environment variables!
     const otpExpiry = new Date(Date.now() + parseInt(process.env.OTP_EXPIRY));
 
     // Create user
-    const user = await user.create({
+    const newUser = await user.create({
       phone,
       username,
       password,
@@ -64,7 +67,7 @@ router.post('/register', [
     console.log(`📱 OTP for ${phone}: ${otp}`);
 
     // Generate temporary token for OTP verification
-    const tempToken = generateToken(user._id);
+    const tempToken = generateToken(newUser._id);
 
     res.status(201).json({
       success: true,
@@ -105,14 +108,15 @@ router.post('/verify-otp', [
     // Verify temp token
     const decoded = jwt.verify(tempToken, process.env.JWT_SECRET);
     
-    const user = await user.findOne({ 
+    // Use lowercase 'user' for Mongoose find
+    const foundUser = await user.findOne({ 
       _id: decoded.id,
       phone,
       'otp.code': otp,
       'otp.expiresAt': { $gt: new Date() }
     });
 
-    if (!user) {
+    if (!foundUser) {
       return res.status(400).json({
         success: false,
         message: 'Invalid or expired OTP'
@@ -120,23 +124,23 @@ router.post('/verify-otp', [
     }
 
     // Mark user as verified
-    user.verified = true;
-    user.otp = undefined;
-    await user.save();
+    foundUser.verified = true;
+    foundUser.otp = undefined;
+    await foundUser.save();
 
     // Generate final token
-    const token = generateToken(user._id);
+    const token = generateToken(foundUser._id);
 
     res.json({
       success: true,
       message: 'Phone verified successfully',
       token,
       user: {
-        id: user._id,
-        username: user.username,
-        phone: user.phone,
-        profileImage: user.profileImage,
-        verified: user.verified
+        id: foundUser._id,
+        username: foundUser.username,
+        phone: foundUser.phone,
+        profileImage: foundUser.profileImage,
+        verified: foundUser.verified
       }
     });
 
@@ -169,8 +173,8 @@ router.post('/login', [
     const { phone, password } = req.body;
 
     // Find user
-    const user = await user.findOne({ phone });
-    if (!user) {
+    const foundUser = await user.findOne({ phone });
+    if (!foundUser) {
       return res.status(401).json({
         success: false,
         message: 'Invalid credentials'
@@ -178,7 +182,7 @@ router.post('/login', [
     }
 
     // Check if verified
-    if (!user.verified) {
+    if (!foundUser.verified) {
       return res.status(401).json({
         success: false,
         message: 'Please verify your phone number first'
@@ -186,7 +190,7 @@ router.post('/login', [
     }
 
     // Check password
-    const isMatch = await user.comparePassword(password);
+    const isMatch = await foundUser.comparePassword(password);
     if (!isMatch) {
       return res.status(401).json({
         success: false,
@@ -195,17 +199,17 @@ router.post('/login', [
     }
 
     // Generate token
-    const token = generateToken(user._id);
+    const token = generateToken(foundUser._id);
 
     res.json({
       success: true,
       token,
       user: {
-        id: user._id,
-        username: user.username,
-        phone: user.phone,
-        profileImage: user.profileImage,
-        bio: user.bio
+        id: foundUser._id,
+        username: foundUser.username,
+        phone: foundUser.phone,
+        profileImage: foundUser.profileImage,
+        bio: foundUser.bio
       }
     });
 
@@ -252,7 +256,8 @@ router.put('/profile', protect, [
     if (bio !== undefined) updates.bio = bio;
     if (profileImage) updates.profileImage = profileImage;
 
-    const user = await user.findByIdAndUpdate(
+    // Use lowercase 'user' for Mongoose update
+    const updatedUser = await user.findByIdAndUpdate(
       req.user._id,
       updates,
       { new: true, runValidators: true }
@@ -261,7 +266,7 @@ router.put('/profile', protect, [
     res.json({
       success: true,
       message: 'Profile updated successfully',
-      user
+      user: updatedUser
     });
 
   } catch (error) {
