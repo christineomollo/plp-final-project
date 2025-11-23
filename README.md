@@ -4,7 +4,9 @@
 
 "A digital haven built on safety, community, and comprehensive well-being, dedicated to empowering every woman."
 
-Deployment link https://burbestie.onrender.com
+Client deploy link https://burbestie.onrender.com
+
+Server deploy link https://plp-final-project-0vkz.onrender.com
 
 Pitch Deck https://docs.google.com/presentation/d/1Fga4f7qilbwqhijk0s62gWDuMrIFUXx8Tzbci3XjrNk/edit?usp=sharing
 
