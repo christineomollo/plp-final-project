@@ -50,7 +50,7 @@ router.post('/register', [
     const otpExpiry = new Date(Date.now() + parseInt(process.env.OTP_EXPIRY));
 
     // Create user
-    const user = await User.create({
+    const user = await user.create({
       phone,
       username,
       password,
@@ -252,7 +252,7 @@ router.put('/profile', protect, [
     if (bio !== undefined) updates.bio = bio;
     if (profileImage) updates.profileImage = profileImage;
 
-    const user = await User.findByIdAndUpdate(
+    const user = await user.findByIdAndUpdate(
       req.user._id,
       updates,
       { new: true, runValidators: true }
