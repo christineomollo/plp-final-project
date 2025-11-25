@@ -9,31 +9,31 @@ html {
   scroll-behavior: smooth;
 }
 
-/* --- NEW HIGH-CONTRAST LIGHT MODE VARIABLES --- */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Light Mode Background (Pink/Lavender/Peach Gradient) */
+  background: linear-gradient(135deg, #a8a8c1 0%, #ffffff 50%, #a97bac 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: #591b5c;
+  line-height: 1.6;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* CSS Variables for Colors */
 :root {
-  /* High Contrast Dark Font Colors (New requirement) */
-  --clr-dark-purple-hc: #4b0082; /* Dark Violet/Indigo */
-  --clr-dark-blue-hc: #00008b;   /* Dark Blue */
-  
-  /* NEW Light Mode Text Gradient */
-  --clr-text-gradient-start-light: var(--clr-dark-purple-hc);
-  --clr-text-gradient-end-light: var(--clr-dark-blue-hc);
-
-  /* Original Themed Colors (Used for contrast text in tabs/buttons) */
-  --clr-pink-dark-hc: #9e0059;  
-  --clr-yellow-dark-hc: #806000; 
-  --clr-green-dark-hc: #006000; 
-
-  /* Emergency Section Colors (Visible on Bright BG) */
-  --clr-emergency-bg-light: #cc0000; 
-  --clr-emergency-text-light: var(--white);
-
-  /* Original Themed Colors (Used for backgrounds, etc.) */
   --bestie-pink: #FFB6C1;
   --bestie-purple: #DDA0DD;
   --bestie-lavender: #E6E6FA;
   --bestie-peach: #FFDAB9;
   --bestie-rose: #FFC0CB;
+  --bestie-lilac: #C8A2C8;
   --white: #FFFFFF;
   --gray-100: #F7FAFC;
   --gray-200: #EDF2F7;
@@ -46,299 +46,37 @@ html {
   --gray-900: #1A202C;
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 2, 4, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* Light Mode Background (Original) */
-  background: linear-gradient(135deg, #a8a8c1 0%, #FFFFFF 50%, #FFDAB9 100%);
-  background-attachment: fixed;
-  min-height: 100vh;
-  /* 💡 CHANGE: Apply Dark Gradient to body text */
-  color: initial; 
-  background-image: linear-gradient(to right, var(--clr-text-gradient-start-light), var(--clr-text-gradient-end-light));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1.6;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-  /* Code blocks should remain readable with solid color */
-  color: var(--clr-dark-purple-hc);
-  -webkit-text-fill-color: initial;
-}
-
-/* --- DARK MODE VARIABLES (for blue/purple theme and white text) --- */
+/* --- DARK MODE VARIABLES (for purple/navy theme) --- */
 html[data-theme="dark"] {
-  /* Text and Background Overrides */
-  --bestie-lavender: #1a1a2e; /* Darkest background */
-  --gray-900: #ffffff; /* Headings (Source for white in white-to-blue gradient) */
-  --gray-700: #E0E0E0; /* Body Text (Lighter gray/white) */
-  --bestie-purple: #483d8b; /* Dark Slate Blue (mid-gradient) */
-  
-  /* Dark Mode Gradient Colors */
-  --clr-dark-gradient-start: #ffffff; 
-  --clr-dark-gradient-mid: #7b0099; 
-  --clr-dark-gradient-end: #4d90e8; 
-
-  /* NEW Dark Mode Text Gradient (Light purple to light blue) */
-  --clr-text-gradient-start-dark: var(--bestie-lilac); /* #C8A2C8 (Light Purple) */
-  --clr-text-gradient-end-dark: var(--gray-500); /* #9aa0c0 (Soft Blue/Gray) */
-
-  /* Original Variables Overrides for Dark Mode */
-  --bestie-pink: #7b0099; 
+  --bestie-pink: #7b0099; /* Darker Pink/Magenta */
+  --bestie-purple: #483d8b; /* Dark Slate Blue */
+  --bestie-lavender: #1a1a2e; /* Dark background */
   --bestie-peach: #3a3a5a;
   --bestie-rose: #591b5c;
+  --bestie-lilac: #C8A2C8; 
+  --white: #1a1a2e; 
   --gray-100: #1f1f3a;
   --gray-200: #2a2a4c;
   --gray-300: #3a3a5a;
   --gray-400: #4a4a70;
-  --gray-500: #9aa0c0;
+  --gray-500: #9aa0c0; /* Footer/Body Text Color */
+  --gray-600: #c1c1d8;
+  --gray-700: #e0e0e0;
+  --gray-800: #f0f0f0;
+  --gray-900: #ffffff; /* Heading Color */
 }
 
 /* Dark Mode Body Background and Text */
 html[data-theme="dark"] body {
   background: linear-gradient(135deg, #1a1a2e 0%, #0a0a1a 50%, #1a1a2e 100%);
-  /* 💡 CHANGE: Apply Light Gradient to dark body text */
-  color: initial;
-  background-image: linear-gradient(to right, 
-      var(--clr-text-gradient-start-dark), 
-      var(--clr-text-gradient-end-dark)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(#c1c1d8); 
 }
-
-/* --- NEW THEME AND CONTRAST IMPLEMENTATION --- */
-
-/* 1. Light Mode Text Colors (Pinks, Yellows, Greens - dark font) */
-.themed-pink {
-    color: var(--clr-pink-dark-hc) !important;
-    -webkit-text-fill-color: initial !important; /* Override gradient for specific colors */
-}
-.themed-yellow {
-    color: var(--clr-yellow-dark-hc) !important;
-    -webkit-text-fill-color: initial !important;
-}
-.themed-green {
-    color: var(--clr-green-dark-hc) !important;
-    -webkit-text-fill-color: initial !important;
-}
-
-/* 💡 CHANGE: Apply dark gradient to headings and labels in light mode */
-h1, h2, h3, h4, h5, h6, label {
-    color: initial;
-    background-image: linear-gradient(to right, var(--clr-text-gradient-start-light), var(--clr-text-gradient-end-light));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    display: inline-block; /* Ensure block elements clip correctly */
-}
-
-/* 2. Dark Mode Font/Text Overrides (Black/Dark fonts to White/Gradient) */
-
-/* 💡 CHANGE: Apply light gradient to headings and labels in dark mode */
-html[data-theme="dark"] h1, 
-html[data-theme="dark"] h2, 
-html[data-theme="dark"] h3, 
-html[data-theme="dark"] h4, 
-html[data-theme="dark"] h5, 
-html[data-theme="dark"] h6,
-html[data-theme="dark"] label {
-    color: initial !important; 
-    background-image: linear-gradient(to right, 
-        var(--clr-text-gradient-start-dark), 
-        var(--clr-text-gradient-end-dark)
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    display: inline-block;
-}
-
-/* Dark Mode Gradient for Footer Headings/Special Text (If not covered above) */
-html[data-theme="dark"] .gradient-text {
-    background: linear-gradient(to right, 
-        var(--clr-dark-gradient-start), 
-        var(--clr-dark-gradient-mid), 
-        var(--clr-dark-gradient-end));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    display: inline-block;
-}
-
-/* --- 3. Emergency Section Visibility --- */
-
-.emergency-section {
-    padding: 1rem;
-    border-radius: 0.5rem;
-    font-weight: bold;
-    background-color: var(--clr-emergency-bg-light); 
-    color: var(--clr-emergency-text-light); 
-    -webkit-text-fill-color: initial !important; /* Override body gradient */
-    background-clip: initial !important;
-    box-shadow: var(--shadow-md);
-}
-
-html[data-theme="dark"] .emergency-section {
-    background-color: #e63946; 
-    color: var(--white);
-    -webkit-text-fill-color: initial !important;
-    background-clip: initial !important;
-}
-
-/* --- 4. Support Section Link Style: Transparent Tabs --- */
-
-/* Targets the footer links for the new 'transparent tab' style */
-.grid.md\:grid-cols-4 li a {
-    /* Make it look like a transparent, bordered tab */
-    background-color: transparent !important;
-    box-shadow: none !important;
-    padding: 4px 8px; /* Give it space like a tab */
-    border-radius: 6px; /* Rounded edges */
-    
-    /* Transparent Tab Look: Subtle border in light mode */
-    border: 1px solid var(--gray-300); 
-    
-    /* Ensure the link text is dark blue (solid) */
-    color: var(--clr-dark-blue-hc) !important;
-    -webkit-text-fill-color: initial !important; /* Keep solid color */
-    
-    /* Remove existing slide effect */
-    padding-left: 8px;
-    transform: none; 
-    transition: all 0.2s ease;
-}
-
-html[data-theme="dark"] .grid.md\:grid-cols-4 li a {
-    /* Dark Mode Transparent Tab Look */
-    border: 1px solid var(--gray-400);
-    color: var(--gray-500) !important; /* Readable light text */
-    -webkit-text-fill-color: initial !important;
-}
-
-.grid.md\:grid-cols-4 li a:hover,
-.grid.md\:grid-cols-4 li a:focus {
-    /* Subtle background fill on hover */
-    background-color: var(--bestie-lavender) !important;
-    border-color: var(--bestie-purple) !important; /* Use purple border */
-    color: var(--clr-dark-purple-hc) !important; /* Use dark purple text */
-    -webkit-text-fill-color: initial !important;
-}
-
-html[data-theme="dark"] .grid.md\:grid-cols-4 li a:hover {
-    background-color: var(--gray-300) !important; 
-    border-color: var(--clr-dark-gradient-end) !important;
-    color: var(--gray-900) !important;
-    -webkit-text-fill-color: initial !important;
-}
-
-
-/* --- 5. Toggles in Tabs and Joyful Tabs (Sections 👥, 🚨, 📚) --- */
-
-.tab-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 1.5rem;
-}
-
-.tab-item {
-    padding: 10px 15px;
-    border-radius: 9999px; /* Rounded pill shape */
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s;
-    /* Light Mode Default Tab Style */
-    background-color: var(--bestie-lavender); 
-    color: var(--clr-dark-purple-hc); /* Use dark purple font */
-    -webkit-text-fill-color: initial !important;
-    background-clip: initial !important;
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--gray-200);
-}
-
-.tab-item:hover {
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
-}
-
-html[data-theme="dark"] .tab-item {
-    background-color: var(--gray-300); 
-    color: var(--gray-900);
-    -webkit-text-fill-color: initial !important;
-    background-clip: initial !important;
-    border-color: var(--gray-400);
-}
-
-/* Toggles in Tabs (Applies to all new sections/subheads if using this class) */
-.tab-item.has-toggle {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-/* Joyful Tab Colors (Section Themes) */
-
-/* Pink Tab (Community Support) - Translucent background */
-.tab-item.tab-pink {
-    background-color: rgba(255, 192, 203, 0.7); /* Translucent Bestie Rose */
-    color: var(--clr-pink-dark-hc); 
-}
-html[data-theme="dark"] .tab-item.tab-pink {
-    background-color: #63006d; 
-    color: var(--white);
-}
-
-/* Yellow/Peach Tab (Empowering Content) - Translucent background */
-.tab-item.tab-yellow {
-    background-color: rgba(255, 239, 196, 0.7); /* Translucent Pale Yellow */
-    color: var(--clr-yellow-dark-hc); 
-}
-html[data-theme="dark"] .tab-item.tab-yellow {
-    background-color: #4b3a00;
-    color: var(--white);
-}
-
-/* Green Tab (SOS Support) - Translucent background */
-.tab-item.tab-green {
-    background-color: rgba(196, 255, 216, 0.7); /* Translucent Pale Green */
-    color: var(--clr-green-dark-hc); 
-}
-html[data-theme="dark"] .tab-item.tab-green {
-    background-color: #004d00;
-    color: var(--white);
-}
-
-/* Active Tab Style (Using the primary gradient) */
-.tab-item.active {
-    background: linear-gradient(to right, var(--bestie-pink), var(--bestie-purple));
-    color: var(--white);
-    -webkit-text-fill-color: initial !important;
-    background-clip: initial !important;
-    box-shadow: var(--shadow-lg);
-    border-color: transparent;
-}
-html[data-theme="dark"] .tab-item.active {
-    /* Use the dark mode gradient for the active state */
-    background: linear-gradient(to right, var(--clr-dark-gradient-mid), var(--clr-dark-gradient-end));
-    color: var(--white);
-    -webkit-text-fill-color: initial !important;
-    background-clip: initial !important;
-    border-color: transparent;
-}
-
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
@@ -360,11 +98,11 @@ html[data-theme="dark"] .tab-item.active {
   background: linear-gradient(to bottom, #ff9db3, #d18dcc);
 }
 
-/* --- GLOBAL DARK MODE OVERRIDES (Rest of the file) --- */
+/* --- GLOBAL DARK MODE OVERRIDES (Affects Navbar, Footer, and other elements) --- */
 
 /* Footer Background (bg-gray-50) */
 html[data-theme="dark"] .bg-gray-50 {
-  background-color: var(--bestie-lavender) !important;
+  background-color: var(transparent) !important;
 }
 /* Borders (border-gray-200) */
 html[data-theme="dark"] .border-gray-200 {
@@ -373,74 +111,77 @@ html[data-theme="dark"] .border-gray-200 {
 /* Text Colors */
 html[data-theme="dark"] .text-gray-600 {
   color: var(--gray-500) !important;
-  -webkit-text-fill-color: initial !important;
-  background-clip: initial !important;
 }
 html[data-theme="dark"] .text-gray-900 {
   color: var(--gray-100) !important;
-  -webkit-text-fill-color: initial !important;
-  background-clip: initial !important;
 }
 
 /* --- DARK MODE GRADIENT FOR FOOTER HEADINGS (Quick Links, Support, Emergency) --- */
-/* Apply the new blue/purple gradient */
-html[data-theme="dark"] .grid.md\:grid-cols-4 h3 {
-  background: linear-gradient(to right, 
-    var(--clr-dark-gradient-start), 
-    var(--clr-dark-gradient-mid), 
-    var(--clr-dark-gradient-end));
+
+/* Target h3 elements inside the footer grid with the specified classes */
+html[data-theme="dark"] .grid.md\:grid-cols-4 h3.text-gray-900 {
+  /* Use light purple (bestie-lilac) to dark purple (bestie-purple) gradient */
+  background: linear-gradient(to right, var(--bestie-lilac), var(--bestie-purple));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  display: inline-block; 
+  display: inline-block; /* Essential for text clipping to work */
+  /* Override the !important used elsewhere for text-gray-900, if needed */
   color: initial; 
 }
 
 
 /* Emergency Button Dark Mode Overrides */
-/* Adjusted to use better dark mode colors */
 
 /* Suicide Prevention (bg-red-50, text-red-700) */
 html[data-theme="dark"] .bg-red-50 {
-  background-color: #3d1414 !important; /* Darker red background */
+  background-color: #330000 !important;
 }
 html[data-theme="dark"] .text-red-700 {
-  color: #ff6b6b !important; /* Lighter red text */
-  -webkit-text-fill-color: initial !important;
-  background-clip: initial !important;
+  color: #d93e44 !important;
 }
 html[data-theme="dark"] .hover\:bg-red-100:hover {
-  background-color: #4f1d1d !important;
+  background-color: #d93e44 !important;
 }
 
 /* Domestic Violence (bg-orange-50, text-orange-700) */
 html[data-theme="dark"] .bg-orange-50 {
-  background-color: #3d2a14 !important; /* Darker orange background */
+  background-color: #d93e44 !important;
 }
 html[data-theme="dark"] .text-orange-700 {
-  color: #f6ad55 !important; /* Lighter orange text */
-  -webkit-text-fill-color: initial !important;
-  background-clip: initial !important;
+  color: #FFDAB9 !important;
 }
 html[data-theme="dark"] .hover\:bg-orange-100:hover {
-  background-color: #4f361d !important;
+  background-color: #d93e44 !important;
 }
 
 /* --- FOOTER LAYOUT & EFFECTS (Based on Footer.jsx structure) --- */
-.grid.md\:grid-cols-4 li {
-  background: none !important;
-}
-
 
 /* 1. Link Hover Effect (Outline/Border) for Quick Links/Support links */
-/* These effects are now handled by the 'Transparent Tab' style above */
-.grid.md\:grid-cols-4 li a:hover {
-  transform: none; /* Override original transform */
+.grid.md\:grid-cols-4 li a {
+  /* Sets initial state and allows custom transition */
+  position: relative;
+  transition: all 0.2s ease;
+  display: inline-block;
+  padding-left: 0;
+  border-left: 3px solid transparent;
 }
 
+.grid.md\:grid-cols-4 li a:hover {
+  /* Adds border and slide effect in Light Mode */
+  padding-left: 0.5rem;
+  border-left-color: var(--bestie-pink);
+  transform: translateX(0);
+}
+
+html[data-theme="dark"] .grid.md\:grid-cols-4 li a:hover {
+  /* Dark Mode Link Hover */
+  border-left-color: var(--bestie-lilac);
+}
 
 /* 2. Vertical Dividers for Grid Columns on Desktop (Layout improvement) */
 @media (min-width: 768px) {
+  /* Targets the 2nd, 3rd, and 4th columns (n+2) in the 4-column layout */
   .grid.md\:grid-cols-4 > div:nth-child(n+2) {
     border-left: 1px solid var(--gray-200);
     padding-left: 2rem;
@@ -457,31 +198,705 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
   margin-bottom: 1rem;
 }
-/* ... (Rest of typography sizes remain the same) ... */
 
-/* --- BURBESTIE APP TITLE GRADIENT --- */
-/* Applied the high-contrast dark colors for Light Mode */
-.app-title {
-  background-image: linear-gradient(
-      180deg, 
-      var(--clr-pink-dark-hc), /* Deep Pink (High Contrast) */
-      var(--bestie-purple)  /* Dark Purple */
-  );
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--bestie-purple);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--bestie-pink);
+}
+
+/* Button Styles */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: linear-gradient(to right, var(--bestie-pink), var(--bestie-purple));
+  color: var(--white);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-primary:hover {
+  box-shadow: var(--shadow-xl);
+  transform: scale(1.05);
+}
+
+.btn-secondary {
+  background: var(--white);
+  color: var(--bestie-purple);
+  border: 2px solid var(--bestie-purple);
+}
+
+.btn-secondary:hover {
+  background: var(--bestie-lavender);
+}
+
+.btn-danger {
+  background: linear-gradient(to right, #FF6B6B, #EE5A6F);
+  color: var(--white);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-danger:hover {
+  box-shadow: var(--shadow-xl);
+  transform: scale(1.05);
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Card Styles */
+.card {
+  background: var(--white);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-lg);
+  padding: 1.5rem;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+html[data-theme="dark"] .card {
+  background: var(--gray-100);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-2xl);
+  transform: translateY(-2px);
+}
+
+.card-header {
+  border-bottom: 1px solid var(--gray-200);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card-body {
+  padding: 1rem 0;
+}
+
+.card-footer {
+  border-top: 1px solid var(--gray-200);
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+/* Input Styles */
+.input-field,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="number"],
+textarea,
+select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid var(--bestie-lavender);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1rem;
+  font-family: inherit;
+  background: var(--white);
+}
+
+html[data-theme="dark"] .input-field,
+html[data-theme="dark"] input[type="text"],
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] select {
+  background: var(--bestie-lavender); 
+  border-color: var(--bestie-purple);
+  color: var(--gray-700);
+}
+
+
+.input-field:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--bestie-purple);
+  box-shadow: 0 0 0 3px rgba(221, 160, 221, 0.1);
+}
+
+.input-error {
+  border-color: #FF6B6B;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.error-message {
+  color: #FF6B6B;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.success-message {
+  color: #48BB78;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Badge Styles */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  text-transform: uppercase;
+}
+
+.badge-pink {
+  background: var(--bestie-pink);
+  color: var(--white);
+}
+
+.badge-purple {
+  background: var(--bestie-purple);
+  color: var(--white);
+}
+
+.badge-success {
+  background: #48BB78;
+  color: var(--white);
+}
+
+.badge-warning {
+  background: #F6AD55;
+  color: var(--white);
+}
+
+.badge-danger {
+  background: #FF6B6B;
+  color: var(--white);
+}
+
+/* Alert Styles */
+.alert {
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid;
+}
+
+.alert-info {
+  background: #E6F7FF;
+  border-color: #1890FF;
+  color: #0050B3;
+}
+
+.alert-success {
+  background: #F0FFF4;
+  border-color: #48BB78;
+  color: #22543D;
+}
+
+.alert-warning {
+  background: #FFFBEB;
+  border-color: #F6AD55;
+  color: #9b7c9a;
+}
+
+.alert-danger {
+  background: #FFF5F5;
+  border-color: #FF6B6B;
+  color: #9b7c9a;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: var(--white);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-2xl);
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+html[data-theme="dark"] .modal-content {
+  background: var(--gray-100);
+}
+
+.modal-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--gray-200);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal-footer {
+  padding: 1.5rem;
+  border-top: 1px solid var(--gray-200);
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--gray-500);
+  transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+  color: var(--gray-700);
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(to right, var(--bestie-pink), var(--bestie-purple));
   -webkit-background-clip: text;
-  background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: transparent;
-  font-size: 2.5rem; 
-  font-weight: 900; 
+  background-clip: text;
   display: inline-block;
 }
 
-/* Dark Mode App Title Gradient (Uses the blue/purple theme) */
-html[data-theme="dark"] .app-title {
-    background-image: linear-gradient(
-        180deg, 
-        var(--clr-dark-gradient-start), 
-        var(--clr-dark-gradient-mid)
-    );
+html[data-theme="dark"] .gradient-text {
+  /* Purple to Navy Blue Gradient for Dark Mode Text */
+  background: linear-gradient(to right, var(--bestie-lilac), var(--bestie-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-/* ... (Rest of CSS utility classes remain the same) ... */
+
+/* Loading Spinner */
+.spinner {
+  border: 3px solid var(--gray-200);
+  border-top: 3px solid var(--bestie-purple);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+.spinner-sm {
+  width: 20px;
+  height: 20px;
+  border-width: 2px;
+}
+
+.spinner-lg {
+  width: 60px;
+  height: 60px;
+  border-width: 4px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-fadeInDown {
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.6s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+/* Utility Classes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.container-sm {
+  max-width: 640px;
+}
+
+.container-md {
+  max-width: 768px;
+}
+
+.container-lg {
+  max-width: 1024px;
+}
+
+.container-xl {
+  max-width: 1280px;
+}
+
+/* Flexbox Utilities */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.gap-1 { gap: 0.25rem; }
+.gap-2 { gap: 0.5rem; }
+.gap-3 { gap: 0.75rem; }
+.gap-4 { gap: 1rem; }
+.gap-5 { gap: 1.25rem; }
+.gap-6 { gap: 1.5rem; }
+.gap-8 { gap: 2rem; }
+
+/* Grid Utilities */
+.grid {
+  display: grid;
+}
+
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+/* Spacing Utilities */
+.m-0 { margin: 0; }
+.m-1 { margin: 0.25rem; }
+.m-2 { margin: 0.5rem; }
+.m-3 { margin: 0.75rem; }
+.m-4 { margin: 1rem; }
+.m-5 { margin: 1.25rem; }
+.m-6 { margin: 1.5rem; }
+.m-8 { margin: 2rem; }
+.m-auto { margin: auto; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 0.75rem; }
+.mt-4 { margin-top: 1rem; }
+.mt-6 { margin-top: 1.5rem; }
+.mt-8 { margin-top: 2rem; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 0.75rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+
+.ml-0 { margin-left: 0; }
+.ml-2 { margin-left: 0.5rem; }
+.ml-4 { margin-left: 1rem; }
+.ml-auto { margin-left: auto; }
+
+.mr-0 { margin-right: 0; }
+.mr-2 { margin-right: 0.5rem; }
+.mr-4 { margin-right: 1rem; }
+.mr-auto { margin-right: auto; }
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.p-0 { padding: 0; }
+.p-1 { padding: 0.25rem; }
+.p-2 { padding: 0.5rem; }
+.p-3 { padding: 0.75rem; }
+.p-4 { padding: 1rem; }
+.p-5 { padding: 1.25rem; }
+.p-6 { padding: 1.5rem; }
+.p-8 { padding: 2rem; }
+
+.px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+.px-4 { padding-left: 1rem; padding-right: 1rem; }
+.px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.px-8 { padding-left: 2rem; padding-right: 2rem; }
+
+.py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+.py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+.py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+.py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+.py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+.py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+
+/* Text Utilities */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+.text-xs { font-size: 0.75rem; }
+.text-sm { font-size: 0.875rem; }
+.text-base { font-size: 1rem; }
+.text-lg { font-size: 1.125rem; }
+.text-xl { font-size: 1.25rem; }
+.text-2xl { font-size: 1.5rem; }
+.text-3xl { font-size: 1.875rem; }
+.text-4xl { font-size: 2.25rem; }
+.text-5xl { font-size: 3rem; }
+
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+
+.text-white { color: var(--white); }
+.text-gray-500 { color: var(--gray-500); }
+.text-gray-600 { color: var(--gray-600); }
+.text-gray-700 { color: var(--gray-700); }
+.text-gray-800 { color: var(--gray-800); }
+
+/* Display Utilities */
+.hidden { display: none; }
+.block { display: block; }
+.inline-block { display: inline-block; }
+
+/* Width & Height */
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.min-h-screen { min-height: 100vh; }
+
+/* Border Utilities */
+.rounded { border-radius: 0.25rem; }
+.rounded-md { border-radius: 0.375rem; }
+.rounded-lg { border-radius: 0.5rem; }
+.rounded-xl { border-radius: 0.75rem; }
+.rounded-2xl { border-radius: 1rem; }
+.rounded-full { border-radius: 9999px; }
+
+/* Shadow Utilities */
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow { box-shadow: var(--shadow); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-xl { box-shadow: var(--shadow-xl); }
+.shadow-2xl { box-shadow: var(--shadow-2xl); }
+
+/* Position Utilities */
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.sticky { position: sticky; }
+
+.top-0 { top: 0; }
+.right-0 { right: 0; }
+.bottom-0 { bottom: 0; }
+.left-0 { left: 0; }
+
+/* Z-Index */
+.z-10 { z-index: 10; }
+.z-20 { z-index: 20; }
+.z-30 { z-index: 30; }
+.z-40 { z-index: 40; }
+.z-50 { z-index: 50; }
+
+/* Overflow */
+.overflow-hidden { overflow: hidden; }
+.overflow-auto { overflow: auto; }
+.overflow-y-auto { overflow-y: auto; }
+.overflow-x-auto { overflow-x: auto; }
+
+/* Cursor */
+.cursor-pointer { cursor: pointer; }
+.cursor-not-allowed { cursor: not-allowed; }
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .md\:flex-row { flex-direction: row; }
+  .md\:text-4xl { font-size: 2.25rem; }
+  .md\:text-5xl { font-size: 3rem; }
+  .md\:px-8 { padding-left: 2rem; padding-right: 2rem; }
+  .md\:py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .lg\:text-5xl { font-size: 3rem; }
+  .lg\:text-6xl { font-size: 3.75rem; }
+  .lg\:px-12 { padding-left: 3rem; padding-right: 3rem; }
+}
