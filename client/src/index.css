@@ -15,6 +15,10 @@ html {
   --clr-dark-purple-hc: #4b0082; /* Dark Violet/Indigo */
   --clr-dark-blue-hc: #00008b;   /* Dark Blue */
   
+  /* NEW Light Mode Text Gradient */
+  --clr-text-gradient-start-light: var(--clr-dark-purple-hc);
+  --clr-text-gradient-end-light: var(--clr-dark-blue-hc);
+
   /* Original Themed Colors (Used for contrast text in tabs/buttons) */
   --clr-pink-dark-hc: #9e0059;  
   --clr-yellow-dark-hc: #806000; 
@@ -57,13 +61,20 @@ body {
   background: linear-gradient(135deg, #a8a8c1 0%, #FFFFFF 50%, #FFDAB9 100%);
   background-attachment: fixed;
   min-height: 100vh;
-  /* 💡 CHANGE: Use Dark Blue for primary body text */
-  color: var(--clr-dark-blue-hc); 
+  /* 💡 CHANGE: Apply Dark Gradient to body text */
+  color: initial; 
+  background-image: linear-gradient(to right, var(--clr-text-gradient-start-light), var(--clr-text-gradient-end-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   line-height: 1.6;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  /* Code blocks should remain readable with solid color */
+  color: var(--clr-dark-purple-hc);
+  -webkit-text-fill-color: initial;
 }
 
 /* --- DARK MODE VARIABLES (for blue/purple theme and white text) --- */
@@ -79,6 +90,10 @@ html[data-theme="dark"] {
   --clr-dark-gradient-mid: #7b0099; 
   --clr-dark-gradient-end: #4d90e8; 
 
+  /* NEW Dark Mode Text Gradient (Light purple to light blue) */
+  --clr-text-gradient-start-dark: var(--bestie-lilac); /* #C8A2C8 (Light Purple) */
+  --clr-text-gradient-end-dark: var(--gray-500); /* #9aa0c0 (Soft Blue/Gray) */
+
   /* Original Variables Overrides for Dark Mode */
   --bestie-pink: #7b0099; 
   --bestie-peach: #3a3a5a;
@@ -93,7 +108,15 @@ html[data-theme="dark"] {
 /* Dark Mode Body Background and Text */
 html[data-theme="dark"] body {
   background: linear-gradient(135deg, #1a1a2e 0%, #0a0a1a 50%, #1a1a2e 100%);
-  color: var(--gray-700); 
+  /* 💡 CHANGE: Apply Light Gradient to dark body text */
+  color: initial;
+  background-image: linear-gradient(to right, 
+      var(--clr-text-gradient-start-dark), 
+      var(--clr-text-gradient-end-dark)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* --- NEW THEME AND CONTRAST IMPLEMENTATION --- */
@@ -101,22 +124,30 @@ html[data-theme="dark"] body {
 /* 1. Light Mode Text Colors (Pinks, Yellows, Greens - dark font) */
 .themed-pink {
     color: var(--clr-pink-dark-hc) !important;
+    -webkit-text-fill-color: initial !important; /* Override gradient for specific colors */
 }
 .themed-yellow {
     color: var(--clr-yellow-dark-hc) !important;
+    -webkit-text-fill-color: initial !important;
 }
 .themed-green {
     color: var(--clr-green-dark-hc) !important;
+    -webkit-text-fill-color: initial !important;
 }
 
-/* 💡 CHANGE: Set headings and labels to Dark Purple in light mode */
+/* 💡 CHANGE: Apply dark gradient to headings and labels in light mode */
 h1, h2, h3, h4, h5, h6, label {
-    color: var(--clr-dark-purple-hc);
+    color: initial;
+    background-image: linear-gradient(to right, var(--clr-text-gradient-start-light), var(--clr-text-gradient-end-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block; /* Ensure block elements clip correctly */
 }
 
 /* 2. Dark Mode Font/Text Overrides (Black/Dark fonts to White/Gradient) */
 
-/* General text elements in dark mode should be light */
+/* 💡 CHANGE: Apply light gradient to headings and labels in dark mode */
 html[data-theme="dark"] h1, 
 html[data-theme="dark"] h2, 
 html[data-theme="dark"] h3, 
@@ -124,13 +155,19 @@ html[data-theme="dark"] h4,
 html[data-theme="dark"] h5, 
 html[data-theme="dark"] h6,
 html[data-theme="dark"] label {
-    color: var(--gray-900) !important; /* White */
+    color: initial !important; 
+    background-image: linear-gradient(to right, 
+        var(--clr-text-gradient-start-dark), 
+        var(--clr-text-gradient-end-dark)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
 }
 
-/* Dark Mode Gradient for Headings/Special Text (White to Blue/Purple) */
-html[data-theme="dark"] .gradient-text,
-html[data-theme="dark"] h1,
-html[data-theme="dark"] h2 {
+/* Dark Mode Gradient for Footer Headings/Special Text (If not covered above) */
+html[data-theme="dark"] .gradient-text {
     background: linear-gradient(to right, 
         var(--clr-dark-gradient-start), 
         var(--clr-dark-gradient-mid), 
@@ -147,16 +184,18 @@ html[data-theme="dark"] h2 {
     padding: 1rem;
     border-radius: 0.5rem;
     font-weight: bold;
-    /* Light Mode: Visible against bright background */
     background-color: var(--clr-emergency-bg-light); 
     color: var(--clr-emergency-text-light); 
+    -webkit-text-fill-color: initial !important; /* Override body gradient */
+    background-clip: initial !important;
     box-shadow: var(--shadow-md);
 }
 
 html[data-theme="dark"] .emergency-section {
-    /* Dark Mode: Ensure it still stands out */
     background-color: #e63946; 
     color: var(--white);
+    -webkit-text-fill-color: initial !important;
+    background-clip: initial !important;
 }
 
 /* --- 4. Support Section Link Style: Transparent Tabs --- */
@@ -172,8 +211,9 @@ html[data-theme="dark"] .emergency-section {
     /* Transparent Tab Look: Subtle border in light mode */
     border: 1px solid var(--gray-300); 
     
-    /* Ensure the link text is dark for contrast */
-    color: var(--clr-dark-blue-hc) !important; /* Use dark blue for links */
+    /* Ensure the link text is dark blue (solid) */
+    color: var(--clr-dark-blue-hc) !important;
+    -webkit-text-fill-color: initial !important; /* Keep solid color */
     
     /* Remove existing slide effect */
     padding-left: 8px;
@@ -185,6 +225,7 @@ html[data-theme="dark"] .grid.md\:grid-cols-4 li a {
     /* Dark Mode Transparent Tab Look */
     border: 1px solid var(--gray-400);
     color: var(--gray-500) !important; /* Readable light text */
+    -webkit-text-fill-color: initial !important;
 }
 
 .grid.md\:grid-cols-4 li a:hover,
@@ -193,12 +234,14 @@ html[data-theme="dark"] .grid.md\:grid-cols-4 li a {
     background-color: var(--bestie-lavender) !important;
     border-color: var(--bestie-purple) !important; /* Use purple border */
     color: var(--clr-dark-purple-hc) !important; /* Use dark purple text */
+    -webkit-text-fill-color: initial !important;
 }
 
 html[data-theme="dark"] .grid.md\:grid-cols-4 li a:hover {
     background-color: var(--gray-300) !important; 
     border-color: var(--clr-dark-gradient-end) !important;
     color: var(--gray-900) !important;
+    -webkit-text-fill-color: initial !important;
 }
 
 
@@ -220,6 +263,8 @@ html[data-theme="dark"] .grid.md\:grid-cols-4 li a:hover {
     /* Light Mode Default Tab Style */
     background-color: var(--bestie-lavender); 
     color: var(--clr-dark-purple-hc); /* Use dark purple font */
+    -webkit-text-fill-color: initial !important;
+    background-clip: initial !important;
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--gray-200);
 }
@@ -232,6 +277,8 @@ html[data-theme="dark"] .grid.md\:grid-cols-4 li a:hover {
 html[data-theme="dark"] .tab-item {
     background-color: var(--gray-300); 
     color: var(--gray-900);
+    -webkit-text-fill-color: initial !important;
+    background-clip: initial !important;
     border-color: var(--gray-400);
 }
 
@@ -244,7 +291,7 @@ html[data-theme="dark"] .tab-item {
 
 /* Joyful Tab Colors (Section Themes) */
 
-/* Pink Tab (Community Support) - 💡 CHANGE: Translucent background */
+/* Pink Tab (Community Support) - Translucent background */
 .tab-item.tab-pink {
     background-color: rgba(255, 192, 203, 0.7); /* Translucent Bestie Rose */
     color: var(--clr-pink-dark-hc); 
@@ -254,7 +301,7 @@ html[data-theme="dark"] .tab-item.tab-pink {
     color: var(--white);
 }
 
-/* Yellow/Peach Tab (Empowering Content) - 💡 CHANGE: Translucent background */
+/* Yellow/Peach Tab (Empowering Content) - Translucent background */
 .tab-item.tab-yellow {
     background-color: rgba(255, 239, 196, 0.7); /* Translucent Pale Yellow */
     color: var(--clr-yellow-dark-hc); 
@@ -264,7 +311,7 @@ html[data-theme="dark"] .tab-item.tab-yellow {
     color: var(--white);
 }
 
-/* Green Tab (SOS Support) - 💡 CHANGE: Translucent background */
+/* Green Tab (SOS Support) - Translucent background */
 .tab-item.tab-green {
     background-color: rgba(196, 255, 216, 0.7); /* Translucent Pale Green */
     color: var(--clr-green-dark-hc); 
@@ -278,6 +325,8 @@ html[data-theme="dark"] .tab-item.tab-green {
 .tab-item.active {
     background: linear-gradient(to right, var(--bestie-pink), var(--bestie-purple));
     color: var(--white);
+    -webkit-text-fill-color: initial !important;
+    background-clip: initial !important;
     box-shadow: var(--shadow-lg);
     border-color: transparent;
 }
@@ -285,6 +334,8 @@ html[data-theme="dark"] .tab-item.active {
     /* Use the dark mode gradient for the active state */
     background: linear-gradient(to right, var(--clr-dark-gradient-mid), var(--clr-dark-gradient-end));
     color: var(--white);
+    -webkit-text-fill-color: initial !important;
+    background-clip: initial !important;
     border-color: transparent;
 }
 
@@ -322,9 +373,13 @@ html[data-theme="dark"] .border-gray-200 {
 /* Text Colors */
 html[data-theme="dark"] .text-gray-600 {
   color: var(--gray-500) !important;
+  -webkit-text-fill-color: initial !important;
+  background-clip: initial !important;
 }
 html[data-theme="dark"] .text-gray-900 {
   color: var(--gray-100) !important;
+  -webkit-text-fill-color: initial !important;
+  background-clip: initial !important;
 }
 
 /* --- DARK MODE GRADIENT FOR FOOTER HEADINGS (Quick Links, Support, Emergency) --- */
@@ -351,6 +406,8 @@ html[data-theme="dark"] .bg-red-50 {
 }
 html[data-theme="dark"] .text-red-700 {
   color: #ff6b6b !important; /* Lighter red text */
+  -webkit-text-fill-color: initial !important;
+  background-clip: initial !important;
 }
 html[data-theme="dark"] .hover\:bg-red-100:hover {
   background-color: #4f1d1d !important;
@@ -362,6 +419,8 @@ html[data-theme="dark"] .bg-orange-50 {
 }
 html[data-theme="dark"] .text-orange-700 {
   color: #f6ad55 !important; /* Lighter orange text */
+  -webkit-text-fill-color: initial !important;
+  background-clip: initial !important;
 }
 html[data-theme="dark"] .hover\:bg-orange-100:hover {
   background-color: #4f361d !important;
