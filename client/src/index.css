@@ -11,14 +11,17 @@ html {
 
 /* --- NEW HIGH-CONTRAST LIGHT MODE VARIABLES --- */
 :root {
-  /* High Contrast Dark Font Colors */
-  --clr-pink-dark-hc: #9e0059;  /* Dark Pink for high contrast */
-  --clr-yellow-dark-hc: #806000; /* Dark Yellow for high contrast */
-  --clr-green-dark-hc: #006000; /* Dark Green for high contrast */
-  --clr-text-primary-light: #1a1a1a; /* Very dark text for high contrast */
+  /* High Contrast Dark Font Colors (New requirement) */
+  --clr-dark-purple-hc: #4b0082; /* Dark Violet/Indigo */
+  --clr-dark-blue-hc: #00008b;   /* Dark Blue */
+  
+  /* Original Themed Colors (Used for contrast text in tabs/buttons) */
+  --clr-pink-dark-hc: #9e0059;  
+  --clr-yellow-dark-hc: #806000; 
+  --clr-green-dark-hc: #006000; 
 
   /* Emergency Section Colors (Visible on Bright BG) */
-  --clr-emergency-bg-light: #cc0000; /* Bright Red */
+  --clr-emergency-bg-light: #cc0000; 
   --clr-emergency-text-light: var(--white);
 
   /* Original Themed Colors (Used for backgrounds, etc.) */
@@ -27,7 +30,6 @@ html {
   --bestie-lavender: #E6E6FA;
   --bestie-peach: #FFDAB9;
   --bestie-rose: #FFC0CB;
-  --bestie-lilac: #C8A2C8;
   --white: #FFFFFF;
   --gray-100: #F7FAFC;
   --gray-200: #EDF2F7;
@@ -51,12 +53,12 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Light Mode Background (Original but with clearer text color) */
+  /* Light Mode Background (Original) */
   background: linear-gradient(135deg, #a8a8c1 0%, #FFFFFF 50%, #FFDAB9 100%);
   background-attachment: fixed;
   min-height: 100vh;
-  /* Use the high-contrast dark color */
-  color: var(--clr-text-primary-light); 
+  /* 💡 CHANGE: Use Dark Blue for primary body text */
+  color: var(--clr-dark-blue-hc); 
   line-height: 1.6;
 }
 
@@ -73,9 +75,9 @@ html[data-theme="dark"] {
   --bestie-purple: #483d8b; /* Dark Slate Blue (mid-gradient) */
   
   /* Dark Mode Gradient Colors */
-  --clr-dark-gradient-start: #ffffff; /* White (for gradient start) */
-  --clr-dark-gradient-mid: #7b0099; /* Bright Purple */
-  --clr-dark-gradient-end: #4d90e8; /* Bright Blue */
+  --clr-dark-gradient-start: #ffffff; 
+  --clr-dark-gradient-mid: #7b0099; 
+  --clr-dark-gradient-end: #4d90e8; 
 
   /* Original Variables Overrides for Dark Mode */
   --bestie-pink: #7b0099; 
@@ -91,7 +93,7 @@ html[data-theme="dark"] {
 /* Dark Mode Body Background and Text */
 html[data-theme="dark"] body {
   background: linear-gradient(135deg, #1a1a2e 0%, #0a0a1a 50%, #1a1a2e 100%);
-  color: var(--gray-700); /* Lighter gray/white */
+  color: var(--gray-700); 
 }
 
 /* --- NEW THEME AND CONTRAST IMPLEMENTATION --- */
@@ -107,9 +109,9 @@ html[data-theme="dark"] body {
     color: var(--clr-green-dark-hc) !important;
 }
 
-/* All main text/headers in light mode should use the dark primary color */
+/* 💡 CHANGE: Set headings and labels to Dark Purple in light mode */
 h1, h2, h3, h4, h5, h6, label {
-    color: var(--clr-text-primary-light);
+    color: var(--clr-dark-purple-hc);
 }
 
 /* 2. Dark Mode Font/Text Overrides (Black/Dark fonts to White/Gradient) */
@@ -153,7 +155,7 @@ html[data-theme="dark"] h2 {
 
 html[data-theme="dark"] .emergency-section {
     /* Dark Mode: Ensure it still stands out */
-    background-color: #e63946; /* Lighter Red/Salmon */
+    background-color: #e63946; 
     color: var(--white);
 }
 
@@ -171,7 +173,7 @@ html[data-theme="dark"] .emergency-section {
     border: 1px solid var(--gray-300); 
     
     /* Ensure the link text is dark for contrast */
-    color: var(--clr-text-primary-light) !important; 
+    color: var(--clr-dark-blue-hc) !important; /* Use dark blue for links */
     
     /* Remove existing slide effect */
     padding-left: 8px;
@@ -189,8 +191,8 @@ html[data-theme="dark"] .grid.md\:grid-cols-4 li a {
 .grid.md\:grid-cols-4 li a:focus {
     /* Subtle background fill on hover */
     background-color: var(--bestie-lavender) !important;
-    border-color: var(--bestie-pink) !important;
-    color: var(--clr-text-primary-light) !important;
+    border-color: var(--bestie-purple) !important; /* Use purple border */
+    color: var(--clr-dark-purple-hc) !important; /* Use dark purple text */
 }
 
 html[data-theme="dark"] .grid.md\:grid-cols-4 li a:hover {
@@ -217,7 +219,7 @@ html[data-theme="dark"] .grid.md\:grid-cols-4 li a:hover {
     transition: all 0.3s;
     /* Light Mode Default Tab Style */
     background-color: var(--bestie-lavender); 
-    color: var(--clr-text-primary-light); /* Dark font for contrast */
+    color: var(--clr-dark-purple-hc); /* Use dark purple font */
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--gray-200);
 }
@@ -242,9 +244,9 @@ html[data-theme="dark"] .tab-item {
 
 /* Joyful Tab Colors (Section Themes) */
 
-/* Pink Tab (Community Support) */
+/* Pink Tab (Community Support) - 💡 CHANGE: Translucent background */
 .tab-item.tab-pink {
-    background-color: var(--bestie-rose); 
+    background-color: rgba(255, 192, 203, 0.7); /* Translucent Bestie Rose */
     color: var(--clr-pink-dark-hc); 
 }
 html[data-theme="dark"] .tab-item.tab-pink {
@@ -252,9 +254,9 @@ html[data-theme="dark"] .tab-item.tab-pink {
     color: var(--white);
 }
 
-/* Yellow/Peach Tab (Empowering Content) */
+/* Yellow/Peach Tab (Empowering Content) - 💡 CHANGE: Translucent background */
 .tab-item.tab-yellow {
-    background-color: #ffefc4; 
+    background-color: rgba(255, 239, 196, 0.7); /* Translucent Pale Yellow */
     color: var(--clr-yellow-dark-hc); 
 }
 html[data-theme="dark"] .tab-item.tab-yellow {
@@ -262,9 +264,9 @@ html[data-theme="dark"] .tab-item.tab-yellow {
     color: var(--white);
 }
 
-/* Green Tab (SOS Support) */
+/* Green Tab (SOS Support) - 💡 CHANGE: Translucent background */
 .tab-item.tab-green {
-    background-color: #c4ffd8; 
+    background-color: rgba(196, 255, 216, 0.7); /* Translucent Pale Green */
     color: var(--clr-green-dark-hc); 
 }
 html[data-theme="dark"] .tab-item.tab-green {
